@@ -1,0 +1,537 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>FlightPulse® Preflight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F4F5F2; --paper-2:#EAEDE7; --card:#FCFDFB;
+  --ink:#101E2B; --ink-2:#44555F; --ink-3:#5C6A65;
+  --rule:#C9D4CC; --rule-soft:#DEE5DE;
+  --accent:#2954A3; --amber:#8A6414; --rose:#A8322D; --sky:#1C5A7A;
+  --f-display:"Fraunces","Iowan Old Style",Georgia,serif;
+  --f-body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  --measure:68ch;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --paper:#0C1418; --paper-2:#121D22; --card:#101A1F;
+  --ink:#E9F0EA; --ink-2:#A9B9B5; --ink-3:#7E8E8A;
+  --rule:#27373C; --rule-soft:#1C2A2F;
+  --accent:#7EA6E3; --amber:#D6AE5E; --rose:#E0817A; --sky:#77B6D6;
+} }
+:root[data-theme="dark"]{
+  --paper:#0C1418; --paper-2:#121D22; --card:#101A1F;
+  --ink:#E9F0EA; --ink-2:#A9B9B5; --ink-3:#7E8E8A;
+  --rule:#27373C; --rule-soft:#1C2A2F;
+  --accent:#7EA6E3; --amber:#D6AE5E; --rose:#E0817A; --sky:#77B6D6;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);
+  font-weight:300;font-size:clamp(1rem,.5vw + .9rem,1.12rem);line-height:1.68;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(1.2rem,4vw,3rem)}
+
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0}
+h1{font-size:clamp(1.85rem,5.6vw,4.2rem);line-height:1.06;letter-spacing:-.028em;
+  font-weight:300;max-width:18ch}
+h2{font-size:clamp(1.85rem,3.4vw,2.9rem);line-height:1.1;letter-spacing:-.018em;margin-bottom:.9rem}
+h3{font-family:var(--f-body);font-size:1.08rem;font-weight:600;margin:0 0 .5rem;letter-spacing:-.005em}
+p{max-width:var(--measure);margin:0 0 1.05rem}
+strong{font-weight:600;color:var(--ink)}
+em{font-style:italic}
+a{color:var(--accent)}
+.lede{font-size:clamp(1.12rem,1.1vw + .95rem,1.42rem);color:var(--ink-2);line-height:1.5;
+  max-width:60ch;font-weight:300}
+.kicker{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--accent);display:block;margin-bottom:1.1rem}
+
+header.hero{padding:clamp(4rem,13vh,9rem) 0 clamp(2.5rem,7vh,4.5rem)}
+header.hero .sub{font-family:var(--f-display);font-style:italic;font-weight:300;
+  font-size:clamp(1.25rem,2.1vw,1.85rem);color:var(--ink-2);max-width:44ch;margin:1.6rem 0 0;line-height:1.35}
+.meta{margin-top:3.2rem;padding-top:1.3rem;border-top:1px solid var(--rule);display:flex;
+  flex-wrap:wrap;gap:.5rem 2.6rem;font-family:var(--f-mono);font-size:.75rem;
+  letter-spacing:.04em;color:var(--ink-3);max-width:none}
+.meta b{color:var(--ink);font-weight:500}
+
+section{padding:clamp(3rem,8vh,6rem) 0;border-top:1px solid var(--rule-soft)}
+section:first-of-type{border-top:0}
+
+/* ── stats ──────────────────────────────────────── */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);margin-top:2.2rem}
+.stat{background:var(--paper);padding:1rem 1.05rem}
+.stat .v{font-family:var(--f-mono);font-size:clamp(1.2rem,1.9vw,1.6rem);font-weight:500;
+  display:block;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat .k{font-size:.73rem;color:var(--ink-3);display:block;margin-top:.3rem;line-height:1.32}
+.stat.g .v{color:var(--accent)}
+
+/* ── columns & cells ────────────────────────────── */
+.cols{display:grid;gap:clamp(1.6rem,3vw,3rem);margin-top:1.8rem}
+.cols.two{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.cols.three{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.cols h3{margin-bottom:.4rem}
+.cols p{font-size:.97rem;color:var(--ink-2)}
+.cols .day{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.45rem}
+
+.cells{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);margin-top:2rem}
+.cell{background:var(--card);padding:1.2rem 1.25rem}
+.cell .who{font-weight:600;font-size:1.04rem;display:block}
+.cell .role{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.09em;color:var(--accent);
+  text-transform:uppercase;display:block;margin:.2rem 0 .6rem}
+.cell h3{font-size:1rem;margin-bottom:.4rem}
+.cell p{margin:0;font-size:.93rem;color:var(--ink-2);line-height:1.5;max-width:none}
+
+/* ── numbered lists (principles, lessons) ───────── */
+ol.steps{list-style:none;padding:0;margin:1.8rem 0 0;border-top:1px solid var(--rule)}
+ol.steps li{padding:1.1rem 0;border-bottom:1px solid var(--rule-soft);
+  display:grid;grid-template-columns:2.2rem minmax(0,1fr);gap:1.1rem;align-items:start}
+ol.steps .n{font-family:var(--f-mono);font-size:.78rem;color:var(--accent);padding-top:.28rem;
+  font-variant-numeric:tabular-nums}
+ol.steps .b{max-width:var(--measure)}
+ol.steps .b b{display:block;font-weight:600;margin-bottom:.22rem;font-size:1.03rem}
+ol.steps .b span{color:var(--ink-2);display:block;font-size:.95rem;line-height:1.58}
+
+/* ── timeline ───────────────────────────────────── */
+ol.timeline{list-style:none;padding:0;margin:1.8rem 0 0;border-top:1px solid var(--rule)}
+ol.timeline li{padding:.95rem 0;border-bottom:1px solid var(--rule-soft);
+  display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr);gap:1.2rem;align-items:start}
+@media (max-width:620px){ ol.timeline li{grid-template-columns:1fr;gap:.25rem} }
+ol.timeline .when{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;
+  color:var(--accent);padding-top:.3rem}
+ol.timeline .b b{display:block;font-weight:600;font-size:1.01rem;margin-bottom:.15rem}
+ol.timeline .b span{color:var(--ink-2);font-size:.93rem;line-height:1.5;display:block}
+
+/* ── notes & quotes ─────────────────────────────── */
+.note{border:1px solid var(--rule);border-left:2px solid var(--accent);background:var(--paper-2);
+  padding:1.1rem 1.3rem;margin:1.6rem 0 0;max-width:var(--measure);font-size:.96rem;line-height:1.58}
+.note.amber{border-left-color:var(--amber)}
+.note .lbl{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-3);display:block;margin-bottom:.4rem}
+.note p:last-child{margin-bottom:0}
+.note p{max-width:none}
+
+.pull{font-family:var(--f-display);font-weight:300;font-style:italic;
+  font-size:clamp(1.2rem,2.1vw,1.72rem);line-height:1.3;color:var(--ink);
+  max-width:34ch;border-left:2px solid var(--accent);padding-left:1.5rem;margin:2.2rem 0 1.2rem}
+.pull p{max-width:none;margin:0}
+.pull cite{font-family:var(--f-mono);font-style:normal;font-size:.7rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);display:block;margin-top:.7rem}
+
+/* ── image slots ────────────────────────────────── */
+.figspot{border:1px dashed var(--rule);background:var(--paper-2);border-radius:6px;
+  padding:2.4rem 1.3rem;margin-top:1.8rem;text-align:center}
+.figspot .lbl{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--amber);display:block;margin-bottom:.35rem}
+.figspot .what{font-size:.93rem;color:var(--ink-3);max-width:46ch;margin:0 auto}
+.figspots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.2rem;margin-top:1.8rem}
+.figspots .figspot{margin-top:0}
+
+footer{padding:4rem 0 5rem;border-top:1px solid var(--rule);margin-top:3rem}
+footer p{font-family:var(--f-mono);font-size:.74rem;color:var(--ink-3);line-height:1.8;max-width:none}
+footer a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+footer a:hover{border-bottom-color:var(--accent)}
+.contact{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;margin-top:.5rem}
+
+.backlink{display:inline-block;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);text-decoration:none;margin-bottom:1.8rem;
+  border-bottom:1px solid transparent;padding-bottom:1px}
+.backlink:hover,.backlink:focus-visible{color:var(--accent);border-bottom-color:var(--accent)}
+.backlink-foot{display:inline-block;margin-top:1rem;font-family:var(--f-mono);font-size:.72rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;
+  border-bottom:1px solid transparent;padding-bottom:1px}
+.backlink-foot:hover{border-bottom-color:var(--accent)}
+
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<header class="hero"><div class="wrap">
+  <a class="backlink" href="../index.html">&larr; Scherry Sweeney &middot; Portfolio</a>
+  <span class="kicker">Design case study · FlightPulse® Preflight</span>
+  <h1>Putting data in the hands of pilots before they leave the gate</h1>
+  <p class="sub">Designing for a cockpit thirty minutes from departure, for people who
+  did not want another app.</p>
+  <div class="meta">
+    <span><b>Lead UX &amp; Interaction Design</b> · Scherry Sweeney</span>
+    <span>GE Aviation (now GE Aerospace)</span>
+    <span>iPad · Electronic Flight Bag</span>
+    <span>June 2019 → March 2020 beta</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat g"><span class="v">5.71MM kg</span><span class="k">CO₂ emissions avoided in year one by Qantas pilots</span></div>
+    <div class="stat g"><span class="v">1.88MM kg</span><span class="k">fuel saved in the first year after adoption</span></div>
+    <div class="stat"><span class="v">6,000+</span><span class="k">pilots using FlightPulse® and trusting it with their data</span></div>
+    <div class="stat"><span class="v">&lt;3 min</span><span class="k">to get in and out — designed to fit inside a pilot's brief</span></div>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <span class="kicker">01 · The problem</span>
+  <h2>Pilots were flying blind on their own data</h2>
+  <p class="lede">Commercial pilots make dozens of high-stakes decisions in the 60–90 minutes
+  before departure — fuel loads, routing, threat awareness, holding estimates. The data they
+  needed most was scattered across disconnected systems, buried in PDFs, or simply unavailable.</p>
+
+  <p>Qantas and GE partnered to change that. The goal: a module for the Electronic Flight Bag
+  that gave pilots access to their airline's historical data lake — aggregate flight metrics,
+  safety events, fuel patterns, holding data — surfaced at exactly the right moment in
+  preflight planning.</p>
+
+  <p>The challenge wasn't making the data available. It was making it <em>trustworthy,
+  scannable and actionable</em> under real conditions: a dark cockpit, limited time, high
+  cognitive load, and strong scepticism toward yet another app.</p>
+
+  <div class="note">
+    <span class="lbl">The ask</span>
+    <p>Design an iPad app for the Electronic Flight Bag that gives commercial airline pilots
+    access to their airline's aggregate historical flight data for pre-departure planning —
+    helping them make better fuel decisions and surface safety risks before they become
+    problems.</p>
+  </div>
+
+  <div class="note amber">
+    <span class="lbl">The constraint</span>
+    <p>Pilots were already overwhelmed. Too many apps, too many data sources, too little
+    time. FlightPulse Preflight had to earn its place on the EFB or it would be ignored
+    entirely.</p>
+  </div>
+
+  <blockquote class="pull">
+    <p>"I don't want or need another app. I have too many already."</p>
+    <cite>Qantas pilot · initial research session</cite>
+  </blockquote>
+
+  <div class="stats" style="margin-top:2.6rem">
+    <div class="stat g"><span class="v">15</span><span class="k">pilot interviews</span></div>
+    <div class="stat"><span class="v">125</span><span class="k">pilots surveyed</span></div>
+    <div class="stat"><span class="v">50</span><span class="k">tasks mapped across 7 flight stages</span></div>
+    <div class="stat g"><span class="v">25 → 5</span><span class="k">ideas narrowed to shipped features</span></div>
+    <div class="stat"><span class="v">19</span><span class="k">person cross-company team, GE &amp; Qantas</span></div>
+  </div>
+
+  <p class="lede" style="margin-top:2.2rem">The rest of this case study covers how that
+  research was run and what it changed: the journey map and personas, the two design
+  thinking workshops, the four principles pilots gave us, the round of validation that sent
+  the MVP back to the drawing board, and the feature-by-feature findings behind what shipped
+  and what was cut.</p>
+</div></section>
+
+<section><div class="wrap" id="gate-wrap">
+  <div class="note" style="max-width:none">
+    <span class="lbl">Full case study — password protected</span>
+    <p style="margin-bottom:1rem">The detailed research, design process, validation findings
+    and screens are gated: this work involved airline operational data and cockpit interfaces
+    designed with Qantas and GE Aviation. If you have the password, enter it below —
+    otherwise, get in touch and I'll share it.</p>
+    <form id="gate-form" autocomplete="off" style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center">
+      <input type="password" id="gate-password" placeholder="Password" style="font:inherit;padding:.55rem .8rem;border:1px solid var(--ink-3);border-radius:6px;min-width:220px;background:var(--card);color:inherit">
+      <button type="submit" style="font:inherit;padding:.55rem 1.1rem;border:1px solid var(--ink);border-radius:6px;background:var(--ink);color:var(--paper);cursor:pointer">Unlock</button>
+    </form>
+    <p id="gate-error" style="display:none;color:var(--rose);margin:.6rem 0 0">That password didn't match — try again.</p>
+  </div>
+</div></section>
+
+<div id="gated-content" style="display:none">
+
+<section><div class="wrap">
+  <span class="kicker">02 · Research</span>
+  <h2>Understanding fifty steps inside a cockpit we'd never flown</h2>
+  <p class="lede">I led all generative and evaluative research for the project, working with
+  Qantas pilot SMEs and interviewing pilots across multiple airlines. The findings forced us
+  to rethink our initial assumptions.</p>
+
+  <div class="stats">
+    <div class="stat"><span class="v">19</span><span class="k">distinct steps identified in a successful preflight</span></div>
+    <div class="stat g"><span class="v">88</span><span class="k">outcome statements mapped to minimise time per step</span></div>
+    <div class="stat g"><span class="v">25+</span><span class="k">underserved needs surfaced by the importance &amp; satisfaction survey</span></div>
+  </div>
+
+  <h3 style="margin-top:2.6rem">The journey map</h3>
+  <p>I mapped the full pilot-in-command journey — from signing on for duty through
+  post-flight shutdown — across 50 tasks, 7 flight stages, and environmental factors
+  including noise, workspace constraints and light conditions.</p>
+  <p>This wasn't a typical journey map. The goal was to identify exactly where in the
+  preflight sequence data could <strong>change a decision</strong> — and where it would be
+  irrelevant, ignored, or actively harmful to surface.</p>
+
+  <h3 style="margin-top:2.2rem">Two pilots, two relationships to data</h3>
+  <div class="cells">
+    <div class="cell">
+      <span class="who">John</span>
+      <span class="role">Long haul</span>
+      <p>Flies Sydney/LA and Sydney/Guangzhou. Starts planning two to three days out.
+      Highly data-motivated — wants to make the right fuel decisions to reduce operational
+      cost. The fleet is his family.</p>
+    </div>
+    <div class="cell">
+      <span class="who">Henry</span>
+      <span class="role">Short haul</span>
+      <p>Flies Sydney–Melbourne twenty times a week. Extremely route-familiar — rarely uses
+      airline apps, relying on fellow pilots and habit. An overabundance of data apps has
+      made him resistant to new tools.</p>
+    </div>
+  </div>
+
+  <div class="figspots">
+    <div class="figspot">
+      <span class="lbl">Image slot</span>
+      <p class="what">Pilot journey map — 50 tasks across 7 flight stages</p>
+    </div>
+    <div class="figspot">
+      <span class="lbl">Image slot</span>
+      <p class="what">Persona boards — John (long haul) and Henry (short haul)</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:2.8rem">Four insights that shaped everything</h3>
+  <div class="cells">
+    <div class="cell">
+      <h3>High noise-to-signal ratio</h3>
+      <p>Pilots make scores of complicated decisions in a short window with too many data
+      sources. More information wasn't the answer — better-filtered information was.</p>
+    </div>
+    <div class="cell">
+      <h3>Safety and fuel are inseparable</h3>
+      <p>Taking on more fuel feels like a safety decision, not an efficiency one. Habitually
+      loading extra fuel reflects the anxiety of the unknown — which data could address.</p>
+    </div>
+    <div class="cell">
+      <h3>Pilots trust people over systems</h3>
+      <p>In uncertainty, pilots ask a trusted colleague, not a computer. The design needed to
+      feel like it surfaced collective pilot wisdom, not cold algorithmic output.</p>
+    </div>
+    <div class="cell">
+      <h3>Context matters as much as data</h3>
+      <p>"I don't just want to know an event occurred — I want to know why, so I can do
+      something about it." Data without explanation was noise.</p>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="kicker">03 · Design process</span>
+  <h2>From 25 ideas to 5 features in nine months</h2>
+  <p class="lede">Design ran in parallel with continuous research, never sequentially — two
+  three-day design thinking workshops with the full 19-person cross-company team, pilot
+  validation at an EFB industry conference, and 90-minute think-aloud sessions with pilots
+  across multiple airlines.</p>
+
+  <p>Every decision was pressure-tested against the real constraints of the cockpit: a pilot
+  thirty minutes from departure, wearing a headset, in a small space, under ambient light,
+  who needs to get in and out of the app in under three minutes.</p>
+
+  <ol class="timeline">
+    <li><span class="when">June 2019</span><span class="b"><b>Project kickoff</b><span>Cross-company team formed across GE and Qantas</span></span></li>
+    <li><span class="when">July – Aug 2019</span><span class="b"><b>Pilot interviews &amp; survey</b><span>15 interviews, 88 outcome statements, 125 pilots surveyed</span></span></li>
+    <li><span class="when">August 2019</span><span class="b"><b>Design thinking workshop #1</b><span>Insights and goals, MVP prioritisation, sketching</span></span></li>
+    <li><span class="when">Sep – Oct 2019</span><span class="b"><b>Wireframes &amp; pilot validation</b><span>Initial MVP tested at EFB conference and with Qantas pilots</span></span></li>
+    <li><span class="when">November 2019</span><span class="b"><b>Workshop #2 + usability testing</b><span>Finalised MVP scope; 10-pilot think-aloud sessions</span></span></li>
+    <li><span class="when">December 2019</span><span class="b"><b>Final visual design &amp; handoff</b><span>High-fidelity dark mode designs, interaction specs</span></span></li>
+    <li><span class="when">March 2020</span><span class="b"><b>Beta release</b><span>Launched to the Qantas fleet; GA planned for June 2020</span></span></li>
+  </ol>
+
+  <h3 style="margin-top:2.8rem">The three-day workshop</h3>
+  <div class="cols three">
+    <div>
+      <span class="day">Day one</span>
+      <h3>Understanding the goals</h3>
+      <p>The full team reviewed research findings, business requirements and pilot
+      requirements. Pilot SMEs guided everyone through what actually matters in the cockpit.</p>
+    </div>
+    <div>
+      <span class="day">Day two</span>
+      <h3>Defining the MVP</h3>
+      <p>Prioritised 25+ product ideas on an importance/effort matrix, balancing what pilots
+      wanted against what engineering could ship by March 2020.</p>
+    </div>
+    <div>
+      <span class="day">Day three</span>
+      <h3>Sketching</h3>
+      <p>Teams sketched MVP ideas for Threats &amp; Events, Holding Fuel and the Fuel
+      Wildcard — shared, critiqued, re-sketched, and left with concepts to validate.</p>
+    </div>
+  </div>
+
+  <div class="figspots">
+    <div class="figspot">
+      <span class="lbl">Image slot</span>
+      <p class="what">Workshop sketches — day three</p>
+    </div>
+    <div class="figspot">
+      <span class="lbl">Image slot</span>
+      <p class="what">Wireframe concepts — MVP exploration</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:2.8rem">Four principles, drawn from pilots rather than convention</h3>
+  <ol class="steps">
+    <li><span class="n">01</span><span class="b"><b>Save me time</b><span>With massive information volume and limited time, any shortcut is a feature. Showing fuel burn filtered by fleet saved pilots the mental load of converting time into fuel.</span></span></li>
+    <li><span class="n">02</span><span class="b"><b>Recent above seasonal</b><span>What happened in the past two to four weeks matters more to a decision than year-over-year trends. Recency became a first-class filter throughout the UI.</span></span></li>
+    <li><span class="n">03</span><span class="b"><b>Transparency of limitations</b><span>For historical aggregates, being explicit about how a number was calculated — and what its limits are — let pilots make their own judgement call. Trust was earned, not assumed.</span></span></li>
+    <li><span class="n">04</span><span class="b"><b>Less context is more</b><span>Show the average. Let the pilot decide whether today is unusual. "Here is the information, here is how we got it — do with it what you want." No over-interpretation.</span></span></li>
+  </ol>
+
+  <div class="figspot">
+    <span class="lbl">Image slot</span>
+    <p class="what">Final high-fidelity dark mode screens — Threats &amp; Events, average holding, planned vs actual fuel</p>
+  </div>
+
+  <blockquote class="pull">
+    <p>"If you're not trying to change a behaviour, there's no point in showing us data."</p>
+    <cite>Pilot · design thinking workshop, day two</cite>
+  </blockquote>
+</div></section>
+
+<section><div class="wrap">
+  <span class="kicker">04 · Validation</span>
+  <h2>The MVP that wasn't good enough, and the pivot that made it ship</h2>
+  <p class="lede">Our first round of pilot validation was humbling. The initial MVP didn't have
+  enough content to earn a place on the EFB, and pilots said so directly. Rather than argue,
+  I went back to the drawing board.</p>
+
+  <div class="cols two">
+    <div>
+      <h3>Round one — initial concept testing</h3>
+      <p>Tested low-fidelity sketches and early wireframes with pilots from three airlines.
+      The feedback was consistent: the MVP felt thin. Pilots started telling us what they
+      <em>actually</em> needed, which opened the door to significant scope expansion.</p>
+      <p>I documented every additional need, knowing we couldn't build them all. The goal was
+      to understand the full picture before deciding what to cut.</p>
+    </div>
+    <div>
+      <h3>Round two — EFB conference + 10 pilot sessions</h3>
+      <p>I turned the expanded concepts into a clickable prototype and took it to an EFB
+      industry conference for desirability feedback, then ran 90-minute think-aloud sessions
+      with 10 Qantas pilots, both long-haul and short-haul.</p>
+      <p>The ask: prioritise every feature down to a top five. The result — their top five
+      included all four of our MVP ideas. That gave me the case to argue we could do all five
+      in time.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:2.8rem">What we learned, feature by feature</h3>
+  <div class="cells">
+    <div class="cell">
+      <span class="role">Threats &amp; events</span>
+      <h3>Most valuable to Qantas</h3>
+      <p>Pilots wanted a text list explaining events and why they occur — not icons or
+      graphics, which go stale as events are added and removed. The context behind an event
+      mattered as much as the event.</p>
+    </div>
+    <div class="cell">
+      <span class="role">Holding data</span>
+      <h3>Duration and fuel, not location</h3>
+      <p>Pilots don't need to know where holding patterns are. They need to know how long
+      holding typically runs for their arrival time and how much fuel it burns. A
+      "Google-style" time-of-day chart — sketched by a Qantas pilot — became the model.</p>
+    </div>
+    <div class="cell">
+      <span class="role">Planned vs actual fuel</span>
+      <h3>Drill-down by phase of flight</h3>
+      <p>High-level averages were interesting; the breakdown was useful. Taxi out, climb, en
+      route — understanding <em>where</em> the variance happened beat knowing that variance
+      existed.</p>
+    </div>
+    <div class="cell">
+      <span class="role">Map / vertical profile</span>
+      <h3>Dropped from the MVP — correctly</h3>
+      <p>Neither group found maps necessary. "You fly the route you are dispatched to fly."
+      Historical flight paths were mildly interesting but not decision-relevant. Cutting it
+      simplified the app without losing pilot value.</p>
+    </div>
+  </div>
+
+  <div class="figspot">
+    <span class="lbl">Image slot</span>
+    <p class="what">Research protocol — October 2019 collaboration-week think-aloud sessions</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="kicker">05 · Outcome</span>
+  <h2>Shipped to Qantas, measured in kilograms</h2>
+  <p class="lede">The product that launched in March 2020 was designed by pilots, for pilots —
+  and the data reflects it.</p>
+
+  <div class="stats">
+    <div class="stat g"><span class="v">5.71MM kg</span><span class="k">CO₂ emissions avoided in year one</span></div>
+    <div class="stat g"><span class="v">1.88MM kg</span><span class="k">fuel saved in year one</span></div>
+    <div class="stat"><span class="v">6,000+</span><span class="k">pilots trusting FlightPulse® with their data</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="kicker">06 · What I'd take forward</span>
+  <h2>Three things this project taught me</h2>
+  <ol class="steps">
+    <li><span class="n">01</span><span class="b"><b>Pilot scepticism was a design constraint, not a problem to solve</b><span>The resistance to "yet another app" forced the product to be genuinely useful rather than merely functional. Designing for adoption meant designing for trust, which meant radical transparency about how data was derived and where it stopped being reliable.</span></span></li>
+    <li><span class="n">02</span><span class="b"><b>Scope creep from user research is a signal, not a failure</b><span>When the initial MVP generated "scope creep," it was because pilots were telling us the original scope wasn't enough. The key was documenting everything, then using a second validation round to let pilots prioritise — turning their demands into our roadmap argument.</span></span></li>
+    <li><span class="n">03</span><span class="b"><b>Cross-company design teams need structural trust-building</b><span>Working across GE and Qantas meant two cultures, two technical stacks and two sets of priorities. The design thinking workshops were the single best tool for getting engineers, data scientists, safety analysts and pilots speaking the same language about what the product needed to do.</span></span></li>
+  </ol>
+</div></section>
+
+</div><!-- /gated-content -->
+
+<footer><div class="wrap">
+  <p>Scherry Sweeney — Product Designer, 15+ years B2B SaaS<br>
+  FlightPulse® Preflight · GE Aviation · 2019–2020</p>
+  <a class="backlink-foot" href="../index.html">&larr; Scherry Sweeney &middot; Portfolio</a>
+  <div class="contact">
+    <a href="mailto:scherry.sweeney@gmail.com">scherry.sweeney@gmail.com</a>
+    <a href="https://linkedin.com/in/scherrysweeney">linkedin.com/in/scherrysweeney</a>
+    <a href="https://scherrysweeney.com">scherrysweeney.com</a>
+  </div>
+</div></footer>
+
+<script>
+(function () {
+  var KEY = 'ge-preflight-unlocked-v2';
+  var HASH = "5a0cb6e5ed60ad1ef14e16ce156c738fa9c1db4a84df4e27d45d771567245a39";
+  var gated = document.getElementById('gated-content');
+  var gateWrap = document.getElementById('gate-wrap');
+  var form = document.getElementById('gate-form');
+  var input = document.getElementById('gate-password');
+  var err = document.getElementById('gate-error');
+
+  function toHex(buf) {
+    return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+      return ('00' + b.toString(16)).slice(-2);
+    }).join('');
+  }
+
+  function reveal() {
+    if (gated) gated.style.display = '';
+    if (gateWrap) gateWrap.style.display = 'none';
+  }
+
+  try { if (sessionStorage.getItem(KEY) === '1') reveal(); } catch (e) {}
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!window.crypto || !window.crypto.subtle) {
+        err.textContent = 'This browser cannot verify the password. Try a modern browser.';
+        err.style.display = 'block';
+        return;
+      }
+      window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(input.value || ''))
+        .then(function (buf) {
+          if (toHex(buf) === HASH) {
+            try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+            err.style.display = 'none';
+            reveal();
+          } else {
+            err.style.display = 'block';
+          }
+        });
+    });
+  }
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,574 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;padding:0;background:transparent}.browser{margin-top:0!important;border-radius:0!important;border:0!important;box-shadow:none!important}
+
+
+
+
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url(../fonts/cbd5a9e216.woff2) format('woff2'); }
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url(../fonts/e22493481f.woff2) format('woff2'); }
+
+:root {
+  
+  --act-font-family: Lato, Arial, Helvetica, sans-serif;
+  --act-font-h1: 700 24px/30px var(--act-font-family);
+  --act-font-h2: 700 18px/22px var(--act-font-family);
+  --act-font-h3: 700 14px/18px var(--act-font-family);
+  --act-font-h4: 700 14px/16px var(--act-font-family);
+  --act-font-subtitle: 400 14px/18px var(--act-font-family);
+  --act-font-body1: 14px/18px var(--act-font-family);
+  --act-font-body2: 12px/16px var(--act-font-family);
+  --act-font-label: 700 var(--act-font-body2);
+  --act-font-label-caption: 12px/12px var(--act-font-family);
+
+  --act-palette-white: #FFF;
+  --act-palette-black: #2A353D;
+  --act-palette-neutral-100: #F7F7FA;  --act-palette-neutral-200: #EDF0F2;
+  --act-palette-neutral-300: #DDE1E3;  --act-palette-neutral-400: #CAD2D9;
+  --act-palette-neutral-500: #A5B7C2;  --act-palette-neutral-600: #879BA7;
+  --act-palette-neutral-700: #697177;  --act-palette-neutral-800: #526774;
+  --act-palette-neutral-900: #425F71;  --act-palette-neutral-1000: #39464F;
+  --act-palette-primary-100: #F3FBFF;  --act-palette-primary-200: #D9F4FF;
+  --act-palette-primary-300: #B2DCED;  --act-palette-primary-400: #03B3FF;
+  --act-palette-primary-500: #008CC5;  --act-palette-primary-600: #00558F;
+  --act-palette-primary-700: #0B3F69;  --act-palette-primary-800: #082A4D;
+  --act-palette-error-100: #FDE3EA;    --act-palette-error-200: #BE2951;
+  --act-palette-warning-100: #FFE0D3;  --act-palette-warning-200: #FE5000;
+  --act-palette-warning-300: #C53D00;  --act-palette-warning-400: #9E3100;
+  --act-palette-warning-500: #782500;
+  --act-palette-success-100: #DAFBF7;  --act-palette-success-200: #A9EEE7;
+  --act-palette-success-300: #00B19E;  --act-palette-success-400: #00887A;
+
+  --act-surface-default: var(--act-palette-white);
+  --act-surface-subtle: var(--act-palette-neutral-100);
+  --act-surface-subtle2: var(--act-palette-neutral-200);
+  
+  --act-surface-disabled: var(--act-palette-neutral-300);
+  --act-surface-info: var(--act-palette-primary-100);
+  --act-surface-error: var(--act-palette-error-100);
+  --act-surface-warning: var(--act-palette-warning-100);
+  --act-surface-success: var(--act-palette-success-100);
+  --act-border-default: var(--act-palette-neutral-300);
+  --act-border-subtle: var(--act-palette-neutral-200);
+  --act-border-strong: var(--act-palette-neutral-400);
+  --act-border-primary: var(--act-palette-primary-400);
+  --act-border-error: var(--act-palette-error-200);
+  --act-border-warning: var(--act-palette-warning-200);
+  --act-border-success: var(--act-palette-success-400);
+  --act-text-primary: var(--act-palette-black);
+  --act-text-secondary: var(--act-palette-neutral-800);
+  --act-text-link: var(--act-palette-primary-600);        
+  
+  --act-text-link-hover:  #0B3F69;
+  --act-text-link-active: #082A4D;
+  --act-text-disabled: var(--act-palette-neutral-700);   
+  --act-text-error: var(--act-palette-error-200);
+  --act-text-warning: var(--act-palette-warning-200);
+  --act-text-success: var(--act-palette-success-400);
+  --act-control-height-sm: 24px;
+  --act-control-height: 30px;
+  --act-control-height-lg: 40px;
+  --act-control-radius: 4px;
+  --act-circle-radius: 999px;
+
+  
+  
+  --ink:       var(--act-text-primary);      
+  --ink-2:     var(--act-text-secondary);    
+  --line:      var(--act-border-default);
+  --line-soft: var(--act-border-subtle);
+  --paper:     var(--act-surface-default);
+  --canvas:    var(--act-surface-subtle);
+  --accent:     var(--act-palette-primary-600);
+  --accent-ink: var(--act-palette-primary-600);  
+  --info-bg:    var(--act-surface-info);
+  --info-line:  var(--act-border-primary);
+  --grey-btn-bg: var(--act-surface-subtle2);
+  --grey-btn-line: var(--act-border-strong);
+
+  
+  --ok-ink:  var(--act-text-primary);
+  --ok-bg:   var(--act-surface-success);
+  --ok-line: var(--act-border-success);
+
+  
+  --attn-ink:  var(--act-palette-warning-400);
+  --attn-bg:   var(--act-surface-warning);
+  --attn-line: var(--act-border-warning);
+
+  
+  --err-ink:  var(--act-text-error);
+  --err-bg:   var(--act-surface-error);
+  --err-line: var(--act-border-error);
+
+  
+  --act-bar: #1e4266;
+  --act-rail: #2b5580;
+  --act-rail-active: #193a58;
+  --act-red: #e8442e;
+  --btn-blue: #2c5b8f;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--act-font-family);
+       color: var(--ink); background: var(--canvas); line-height: 1.45; padding: 24px 16px 64px; }
+main { max-width: 1360px; margin: 0 auto; }
+
+.doc-head h1 { font-size: 1.25rem; margin: 0 0 4px; }
+.doc-head p  { margin: 0 0 8px; color: var(--ink-2); font-size: .9rem; max-width: 78ch; }
+
+
+.browser { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+           box-shadow: 0 1px 3px rgba(29,37,48,.08); margin-top: 18px; }
+.browser-bar { display: flex; align-items: center; gap: 10px; padding: 9px 14px; background: #e9ecef; border-bottom: 1px solid var(--line); }
+.browser-bar .dots { display: flex; gap: 5px; }
+.browser-bar .dots i { width: 10px; height: 10px; border-radius: 50%; background: #c2c9d1; }
+.browser-bar .url { flex: 1; background: var(--paper); border: 1px solid var(--line); border-radius: var(--act-control-radius); padding: 3px 10px; font-size: .78rem; color: var(--ink-2); }
+.frame-scroll { overflow-x: auto; }
+.frame { min-width: 1180px; }
+
+svg.i { width: 18px; height: 18px; flex: none; stroke-width: 1.6; }
+.i * { vector-effect: non-scaling-stroke; }
+.chip .i { width: 15px; height: 15px; }
+
+
+.chip .i:has(use[href="#act-email-verification"]) { width: 18px; height: 18px; }
+
+
+.topbar { display: flex; align-items: center; gap: 4px; background: var(--act-bar); color: var(--act-palette-white); padding: 0 14px; height: 52px; }
+.logo { width: 34px; height: 34px; border-radius: 50%; background: var(--act-red); color: var(--act-palette-white); font-weight: 800; font-size: .78rem;
+        display: flex; align-items: center; justify-content: center; margin-right: 10px; letter-spacing: -.02em; }
+.topnav { display: flex; gap: 4px; }
+.topnav a { color: #e9eef4; text-decoration: none; font-size: .88rem; padding: 6px 10px; border-radius: var(--act-control-radius); }
+.topsearch { display: flex; align-items: center; gap: 8px; background: var(--act-palette-white); color: var(--ink-2); border-radius: 8px;
+             padding: 6px 12px; font-size: .85rem; width: 300px; margin-left: 28px; }
+.top-icons { margin-left: auto; display: flex; align-items: center; gap: 16px; color: #e9eef4; }
+.top-icons .help { width: 20px; height: 20px; border: 1.6px solid #e9eef4; border-radius: 50%; font-size: .72rem; font-weight: 700;
+                   display: flex; align-items: center; justify-content: center; }
+
+
+.shell { display: flex; align-items: stretch; background: var(--paper); }
+.rail { width: 250px; flex: none; background: var(--act-rail); color: #dfe7ef; font-size: .88rem; display: flex; flex-direction: column; }
+.rail nav a { display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: #dfe7ef; text-decoration: none; }
+.rail nav a[aria-current="page"] { background: var(--act-rail-active); color: var(--act-palette-white); font-weight: 600; }
+.rail .collapse { padding: 10px 16px 4px; color: #dfe7ef; font-size: 1rem; }
+.rail-lookup { margin-top: auto; padding: 14px 16px 10px; border-top: 1px solid rgba(255,255,255,.18); }
+.rail-lookup h3 { margin: 0 0 12px; font-size: .78rem; letter-spacing: .06em; font-weight: 700; display: flex; justify-content: space-between; }
+.rail-lookup label { display: block; font-size: .8rem; font-weight: 700; margin: 10px 0 4px; }
+.rail-lookup select, .rail-lookup input { width: 100%; font: inherit; font-size: .85rem; padding: 7px 9px; border-radius: var(--act-control-radius);
+                                          border: 1px solid #9db2c6; background: var(--act-palette-white); color: var(--ink); }
+.btn-lookup { font: inherit; font-size: .85rem; font-weight: 600; margin-top: 12px; padding: 7px 18px; border-radius: var(--act-control-radius);
+              background: var(--act-palette-white); color: var(--act-rail); border: 1px solid var(--act-palette-white); }
+.btn-more { font: inherit; font-size: .85rem; font-weight: 600; margin: 14px 0 12px; padding: 8px 14px; border-radius: var(--act-control-radius);
+            background: transparent; color: var(--act-palette-white); border: 1.5px solid #dfe7ef; display: inline-flex; gap: 8px; align-items: center; }
+
+.stage { flex: 1; min-width: 0; background: var(--paper); display: flex; flex-direction: column; }
+
+
+.area-head { display: flex; align-items: center; gap: 22px; padding: 16px 22px 12px; }
+.peers { display: flex; align-items: baseline; gap: 20px; }
+.peers a { font-size: 1.05rem; color: var(--accent-ink); text-decoration: none; font-weight: 500; }
+.peers .current { font-size: 1.2rem; font-weight: 700; color: var(--ink); }
+
+
+
+:root { --rail-badge-bg: #E79392; }   
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+.peers a, .peers .current { white-space: nowrap; }
+
+.area-actions { margin-left: auto; display: flex; align-items: center; gap: 18px; font-size: .85rem; color: var(--ink); }
+.area-actions .act { display: inline-flex; align-items: center; gap: 6px; color: var(--ink); text-decoration: none; }
+.btn-create { font: inherit; font-size: .88rem; font-weight: 600; background: var(--btn-blue); color: var(--act-palette-white); border: none;
+              border-radius: var(--act-control-radius); padding: 8px 16px; display: inline-flex; gap: 8px; align-items: center; }
+.kebab { font-size: 1.2rem; color: var(--ink-2); letter-spacing: 1px; }
+
+
+.rec-bar { display: flex; align-items: center; gap: 16px; background: var(--act-surface-subtle2); border-top: 1px solid var(--line);
+           border-bottom: 1px solid var(--line); padding: 8px 22px; }
+.rec-bar h2 { margin: 0; font-size: 1rem; font-weight: 700; }
+.pager-ctl { display: flex; align-items: center; gap: 10px; color: var(--ink-2); font-size: .85rem; }
+.segmented { display: flex; border: 1px solid var(--accent-ink); border-radius: var(--act-control-radius); overflow: hidden; margin-left: 10px; }
+.segmented a { font-size: .85rem; font-weight: 600; padding: 7px 16px; text-decoration: none; color: var(--accent-ink); background: var(--act-palette-white); border-right: 1px solid var(--accent-ink); }
+.segmented a:last-child { border-right: none; }
+.segmented a[aria-current="page"] { background: var(--act-bar); color: var(--act-palette-white); }
+.rec-actions { margin-left: auto; display: flex; align-items: center; gap: 12px; position: relative; }
+.btn-oppy-actions { font: inherit; font-size: .86rem; font-weight: 600; color: var(--accent-ink); background: var(--act-palette-white);
+                    border: 1px solid var(--accent-ink); border-radius: var(--act-control-radius); padding: 8px 16px; display: inline-flex; gap: 8px; align-items: center; }
+.btn-save { font: inherit; font-size: .86rem; font-weight: 600; color: var(--ink-2); background: var(--grey-btn-bg);
+            border: 1px solid var(--grey-btn-line); border-radius: var(--act-control-radius); padding: 8px 20px; }
+
+
+
+.state-label { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+               color: var(--ink-2); margin: 40px 0 10px; }
+.state-label strong { color: var(--ink); }
+
+
+.banner-info { display: flex; align-items: flex-start; gap: 8px; margin: 14px 22px 0;
+               padding: 12px 12px 12px 0; border: none; border-radius: var(--act-control-radius);
+               background: var(--act-surface-info); color: var(--act-text-primary);
+               position: relative; overflow: hidden; }
+.banner-info::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+                       background: var(--accent); }
+.banner-info .icon { flex: none; width: 18px; height: 18px; margin-left: 12px;
+                     display: flex; align-items: center; justify-content: center; font-style: normal;
+                     color: var(--accent); }
+.banner-info .icon .i { width: 18px; height: 18px; }
+.banner-info .txt { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.banner-info h3 { margin: 0; font: 700 12px/16px var(--act-font-family); color: var(--act-text-primary); }
+.qb-err { display: block; margin: 4px 0; padding: 6px 8px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+           font-size: 11px; line-height: 15px; background: var(--act-palette-white);
+           border-left: 2px solid var(--act-text-error); color: var(--act-text-primary); }
+.banner-info p  { margin: 0; font: 400 12px/16px var(--act-font-family); color: var(--act-text-primary); }
+
+
+.banner-err  { background: var(--act-surface-error); }
+.banner-err::before  { background: var(--act-text-error); }
+.banner-err .icon    { color: var(--act-text-error); }
+.banner-ok   { background: var(--act-surface-success); }
+.banner-ok::before   { background: var(--act-palette-success-400); }
+.banner-ok .icon    { color: var(--act-palette-success-400); }
+.banner-sent { background: var(--act-surface-subtle2); }          
+.banner-sent::before { background: var(--act-palette-neutral-700); }
+.banner-sent .icon    { color: var(--act-palette-neutral-700); }
+.banner-attn { background: var(--act-surface-warning); }          
+.banner-attn::before { background: var(--act-palette-warning-200); }
+.banner-attn .icon    { color: var(--act-palette-warning-200); }
+
+
+.btn-banner { margin-left: 30px; font: inherit; font-size: .86rem; font-weight: 600; color: var(--act-palette-white); background: var(--btn-blue);
+              border: 1px solid var(--btn-blue); border-radius: var(--act-control-radius); padding: 8px 16px; text-decoration: none; white-space: nowrap; }
+
+
+.form-wrap { padding: 16px 22px 8px; }
+.sect-h { font-size: 1rem; font-weight: 600; margin: 0 0 2px; }
+.sect-rule { border: none; border-top: 2px solid var(--line); margin: 0 0 12px; }
+.name-row { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.name-row label { font-size: .88rem; width: 90px; }
+.name-row input { flex: 1; max-width: 620px; font: inherit; font-size: .9rem; padding: 8px 10px; border: 1px solid var(--act-border-strong); border-radius: var(--act-control-radius); }
+.form-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 28px; }
+.frow { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.frow label { font-size: .88rem; width: 90px; flex: none; }
+.frow input, .frow select { font: inherit; font-size: .9rem; padding: 8px 10px; border: 1px solid var(--act-border-strong); border-radius: var(--act-control-radius); width: 200px; }
+.frow input[readonly] { background: var(--act-surface-disabled); border-color: var(--act-border-strong); color: var(--ink); }
+fieldset.statusbox { border: 1px solid var(--line); border-radius: var(--act-control-radius); margin: 0 0 16px; padding: 12px 16px 14px; }
+fieldset.statusbox legend { font-size: 1rem; font-weight: 600; padding: 0 6px; margin-left: -6px; }
+.statusbox .opt { display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: .9rem; }
+.statusbox input[type="radio"] { width: 17px; height: 17px; accent-color: var(--accent); }
+fieldset.stagebox { border: 1px solid var(--line); border-radius: var(--act-control-radius); margin: 0; padding: 12px 16px 14px; }
+fieldset.stagebox legend { font-size: .88rem; font-weight: 600; padding: 0 6px; margin-left: -6px; }
+.assoc { border: 1px solid var(--line); border-radius: var(--act-control-radius); padding: 12px 16px 16px; }
+.assoc h3 { margin: 0 0 10px; font-size: 1rem; font-weight: 600; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.assoc ul { list-style: none; margin: 0; padding: 0; font-size: .9rem; }
+.assoc > ul > li { padding: 4px 0; font-weight: 700; }
+.assoc ul ul { padding-left: 22px; font-weight: 400; }
+
+.assoc ul ul a                { color: var(--act-text-link); font-weight: 700; text-decoration: none; }
+.assoc ul ul a:hover          { color: var(--act-text-link-hover); text-decoration: none; }
+.assoc ul ul a:active         { color: var(--act-text-link-active); }
+.assoc ul ul a[aria-disabled="true"]
+                              { color: var(--act-text-disabled); pointer-events: none; }
+.assoc ul ul a:focus-visible  { outline: 2px solid var(--act-text-link); outline-offset: 2px;
+                                border-radius: 2px; }
+
+
+.rec-tabs { display: flex; align-items: center; gap: 2px; border-top: 2px solid var(--accent); border-bottom: 1px solid var(--line);
+            padding: 0 12px; font-size: .88rem; margin-top: 10px; overflow: hidden; }
+.rec-tabs a { padding: 11px 12px; color: var(--ink); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; }
+.rec-tabs a[aria-current="page"] { font-weight: 700; border-bottom-color: var(--accent-ink); }
+.rec-tabs .ovf { margin-left: auto; color: var(--ink-2); display: flex; gap: 10px; padding: 0 6px; }
+
+
+.tab-body { padding: 16px 22px 10px; }
+.tab-toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.btn-primary-sm { font: inherit; font-size: .86rem; font-weight: 600; color: var(--act-palette-white); background: var(--btn-blue);
+                  border: 1px solid var(--btn-blue); border-radius: var(--act-control-radius); padding: 8px 18px; }
+.btn-gray-sm { font: inherit; font-size: .86rem; font-weight: 600; color: var(--ink-2); background: var(--grey-btn-bg);
+               border: 1px solid var(--grey-btn-line); border-radius: var(--act-control-radius); padding: 8px 16px; }
+table.plist { width: 100%; border-collapse: collapse; font-size: .87rem; border: 1px solid var(--line); }
+table.plist caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+table.plist th, table.plist td { padding: 9px 12px; border-bottom: 1px solid var(--line-soft); text-align: left; }
+table.plist thead th { background: var(--act-surface-subtle); font-size: .8rem; font-weight: 700; border-bottom: 1px solid var(--line); }
+table.plist .num { text-align: right; white-space: nowrap; }
+.tab-pager { display: flex; align-items: center; gap: 16px; padding: 12px 0 8px; color: var(--ink-2); font-size: .85rem; }
+.tab-pager select { font: inherit; font-size: .85rem; padding: 6px 10px; border: 1px solid var(--act-border-strong); border-radius: var(--act-control-radius); }
+
+.foot-bar { background: #333c44; color: #e8ebef; font-size: .85rem; font-weight: 600; padding: 8px 22px; }
+
+
+.chip { color: var(--act-text-secondary) !important; }
+.chip-ok .i       { color: var(--act-palette-success-400); }
+.chip-err .i      { color: var(--act-text-error); }
+.chip-unsent .i   { color: var(--accent-ink); }
+.chip-sent .i     { color: var(--ink-2); }
+.chip-unlinked .i,
+.chip-overdue .i  { color: var(--attn-ink); }
+.errblock, .errblock h4, .errblock p { color: var(--act-text-secondary); }
+.attn-caption { color: var(--act-text-secondary); }
+
+
+tr.rowlink:hover,
+table.grid tbody tr:hover,
+table.items tbody tr:hover { background: var(--act-surface-info); }
+
+
+.act-surface-subtle3, [class*="surface-subtle3"],
+.act-surface-disabled, [class*="surface-disabled"] { color: var(--act-palette-neutral-900); }
+.on-neutral-300 { color: var(--act-palette-neutral-900); }
+</style></head><body><svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><defs>
+  <symbol id="act-home" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path fill="currentColor" fill-rule="evenodd" d="M14 8.05a.5.5 0 0 1 .5.5v5a2.5 2.5 0 0 1-2.5 2.5H6a2.5 2.5 0 0 1-2.5-2.5v-5a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5v-5a.5.5 0 0 1 .5-.5" clip-rule="evenodd"/><path fill="currentColor" fill-rule="evenodd" d="M9.96 3.507a1.5 1.5 0 0 0-1.958-.004L2.326 8.38a.5.5 0 1 1-.652-.758L7.35 2.745a2.5 2.5 0 0 1 3.265.006l5.626 4.871a.5.5 0 1 1-.654.756z" clip-rule="evenodd"/></g></symbol>
+  <symbol id="act-people" viewBox="0 0 20 20" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M10 19a9 9 0 1 0 0-18 9 9 0 0 0 0 18"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M16.39 16.334c.191-.192.371-.394.551-.608q.235-.281.439-.585.096-.12.169-.259.13-.178.236-.37c0-.068.079-.136.101-.192a2 2 0 0 0 .113-.203c.09-.19.18-.37.259-.562a9 9 0 0 0 .337-.911 10.459 10.459 0 0 0 .338-1.687 5.13 5.13 0 0 0-6.12 2.452l.348.258q.192.139.36.304c.113.113.225.225.326.349q.166.17.293.371.15.184.259.394.135.196.225.416.113.212.191.439v0q.075.186.113.382.066.2.1.405"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M17.38 5.5q.219-.016.438 0A9 9 0 0 1 19 10v.068a2.565 2.565 0 0 1-4.184-1.992A2.564 2.564 0 0 1 17.38 5.5M3.61 16.334a10 10 0 0 1-.551-.608 7 7 0 0 1-.462-.664 1.7 1.7 0 0 1-.168-.258 3 3 0 0 1-.237-.372c0-.067-.078-.135-.1-.191a2 2 0 0 1-.113-.202c-.09-.192-.18-.372-.26-.563a9 9 0 0 1-.337-.911 10.423 10.423 0 0 1-.337-1.687 5.13 5.13 0 0 1 6.142 2.53l-.348.26a3 3 0 0 0-.36.303c-.113.113-.225.225-.327.349a4.9 4.9 0 0 0-.877 1.395v.079l-.18.393q-.091.294-.146.596"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M2.62 5.5a3 3 0 0 0-.44 0A9 9 0 0 0 1.057 10v.068a2.566 2.566 0 0 0 4.129-1.992A2.565 2.565 0 0 0 2.62 5.5M10 12.576a5.14 5.14 0 0 1 5.13 4.815 9 9 0 0 1-10.26 0A5.13 5.13 0 0 1 10 12.576"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M10 12.576a2.576 2.576 0 1 0 0-5.152 2.576 2.576 0 0 0 0 5.152"/></symbol>
+  <symbol id="act-calendar" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M2 13.556a3 3 0 0 0 3 3h8.222a3 3 0 0 0 3-3V5.333a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3z" clip-rule="evenodd"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M2 7.222h14.222M6 3.667V1M12.222 3.667V1"/></g></symbol>
+  <symbol id="act-history" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M10 16a7 7 0 1 0-7-7"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M5.099 7.858 3.024 9.932.95 7.858M13.05 9.202H9.799V3.973"/></g></symbol>
+  <symbol id="act-sales" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7.008 11.38c.075 1.055 1.066 1.89 2.28 1.89 1.262 0 2.281-.904 2.281-2.019 0-1.644-1.883-1.69-2.282-1.785-.4-.097-2.283-.146-2.283-1.79 0-1.112 1.024-2.014 2.284-2.014 1.21 0 2.202.835 2.278 1.886M9.173 5.566V4.03M9.173 14.697v-1.536"/></g></symbol>
+  <symbol id="act-chart" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M1 16.5h16M5.5 16v-5h-3v5M10.5 16V7h-3v9M15.5 16V1h-3v15"/></g></symbol>
+  <symbol id="act-mail" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M17 13.435c0 .768-.623 1.391-1.391 1.391H2.39A1.39 1.39 0 0 1 1 13.435V4.39C1 3.623 1.623 3 2.391 3H15.61C16.377 3 17 3.623 17 4.391z" clip-rule="evenodd"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m3.206 5.02 4.318 4.72c.88.958 2.322.958 3.202 0l4.311-4.714M7.003 9.207l-3.797 3.468M11.248 9.207l3.799 3.468"/></g></symbol>
+  <symbol id="act-tools" viewBox="0 0 20 20" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M13.389 12a5.5 5.5 0 0 0 5.5-5.5c0-.706-.147-1.38-.389-2 0 0-3.611 4.5-5.611 2.5C11.004 5.115 15.5 1.5 15.5 1.5c-.62-.242-1.405-.5-2.111-.5a5.5 5.5 0 0 0-5.084 7.603L1.89 14.5s-2 1.5 0 3.5 3.5 0 3.5 0l5.846-6.438c.661.282 1.39.438 2.154.438"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M4 17a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/></symbol>
+  <symbol id="act-utilities" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M9 13c-1.596 0-2.9-1.445-3-2.5V9m3 4c1.66 0 3-1.384 3-2.5V9m-3 4v2c0 1.5-1.632 1.816-3 1.419A8.003 8.003 0 0 1 9 1a8 8 0 0 1 3 15.418M6 9.001h6M6 9c-.743 0-.608-.783-.276-1.448a1 1 0 0 1 .894-.552h4.764a1 1 0 0 1 .895.552c.332.665.467 1.448-.277 1.448M7.5 7V4m3 3V4"/></g></symbol>
+  <symbol id="act-arrow-left" viewBox="0 0 24 24" fill="none"><path fill="currentColor" d="M9.57 18.821c-.19 0-.38-.07-.53-.22l-6.07-6.07a.754.754 0 0 1 0-1.06l6.07-6.07c.29-.29.77-.29 1.06 0s.29.77 0 1.06l-5.54 5.54 5.54 5.54c.29.29.29.77 0 1.06-.14.15-.34.22-.53.22"/><path fill="currentColor" d="M20.5 12.75H3.67c-.41 0-.75-.34-.75-.75s.34-.75.75-.75H20.5c.41 0 .75.34.75.75s-.34.75-.75.75"/></symbol>
+  <symbol id="act-notification" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M2.667 18.554h18.667v-.237c0-.666-.378-1.274-.974-1.57v0a3.05 3.05 0 0 1-1.693-2.731V9.333A6.667 6.667 0 0 0 12 2.667v0a6.667 6.667 0 0 0-6.666 6.666v4.463a3.31 3.31 0 0 1-1.693 2.89v0a1.9 1.9 0 0 0-.974 1.66z" clip-rule="evenodd"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M8.666 18.667c0 1.473 1.493 2.666 3.334 2.666s3.333-1.193 3.333-2.666"/></symbol>
+  <symbol id="act-question" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><circle cx="9" cy="9" r="8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M9 12.5v.61"/><path fill="currentColor" d="M9 9v-.5a.5.5 0 0 0-.5.5zM6.5 7a.5.5 0 0 0 1 0zm2 4a.5.5 0 0 0 1 0zm2-4A1.5 1.5 0 0 1 9 8.5v1A2.5 2.5 0 0 0 11.5 7zm-3 0A1.5 1.5 0 0 1 9 5.5v-1A2.5 2.5 0 0 0 6.5 7zM9 5.5A1.5 1.5 0 0 1 10.5 7h1A2.5 2.5 0 0 0 9 4.5zM8.5 9v2h1V9z"/></g></symbol>
+  <symbol id="act-account" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M12.277 11.297a8.297 8.297 0 0 1 8.28 7.777 14.44 14.44 0 0 1-8.28 2.593c-3.076 0-5.929-.956-8.277-2.588a8.29 8.29 0 0 1 8.277-7.782" clip-rule="evenodd"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M12.275 11.297a4.148 4.148 0 1 0 0-8.297 4.148 4.148 0 0 0 0 8.297"/></symbol>
+  <symbol id="act-cart" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path fill="currentColor" fill-rule="evenodd" d="M0 3.288a.5.5 0 0 1 .5-.5h1.659a1.5 1.5 0 0 1 1.465 1.179l.001.003.211.996h11.811a1.502 1.502 0 0 1 1.443 1.907l-1.16 4.124a2.5 2.5 0 0 1-2.407 1.822H6.554c-.629 0-1.207-.298-1.642-.697-.436-.4-.774-.943-.9-1.514l-.001-.004L2.647 4.18a.5.5 0 0 0-.488-.392H.5a.5.5 0 0 1-.5-.5m4.049 2.678.94 4.428c.076.345.294.711.6.99.306.282.654.435.965.435h6.969a1.5 1.5 0 0 0 1.444-1.093l1.16-4.125a.5.5 0 0 0-.48-.635zM7.5 14.269a.577.577 0 1 0 0 1.154.577.577 0 0 0 0-1.154m-1.577.577a1.577 1.577 0 1 1 3.154 0 1.577 1.577 0 0 1-3.154 0M12.346 14.269a.577.577 0 1 0 0 1.154.577.577 0 0 0 0-1.154m-1.577.577a1.577 1.577 0 1 1 3.154 0 1.577 1.577 0 0 1-3.154 0" clip-rule="evenodd"/></g></symbol>
+  <symbol id="act-chevron-down" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m3 6 6.01 6L15 6"/></g></symbol>
+  <symbol id="act-refresh" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path d="M11.4085 4.93359L14.3418 4.93359L14.3418 2.00026" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 9.48242C16 13.3484 12.866 16.4824 9 16.4824C5.13401 16.4824 2 13.3484 2 9.48242C2 5.61643 5.13401 2.48242 9 2.48242C11.0381 2.48242 12.8728 3.35348 14.1521 4.74364" stroke="currentColor" stroke-linecap="round"/></g></symbol>
+  <symbol id="act-menu-kebab-dark" viewBox="0 0 12 18" fill="none"><circle cx="6" cy="9" r="1.5" transform="rotate(-90 6 9)" fill="currentColor"/><circle cx="6" cy="3" r="1.5" transform="rotate(-90 6 3)" fill="currentColor"/><circle cx="6" cy="15" r="1.5" transform="rotate(-90 6 15)" fill="currentColor"/></symbol>
+  <symbol id="act-close" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path d="M15 3L3 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 3L15 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></g></symbol>
+  <symbol id="act-columns" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M18.556 1.16H5.095a3.936 3.936 0 0 0-3.936 3.936v13.462a3.936 3.936 0 0 0 3.936 3.936h13.461a3.936 3.936 0 0 0 3.936-3.936V5.096a3.936 3.936 0 0 0-3.936-3.936m-10.61 0v21.334M15.704 1.16v21.334"/></symbol>
+  <symbol id="act-chevron-left" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M12 3 6 9.01 12 15"/></g></symbol>
+  <symbol id="act-chevron-right" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m6 3 6 6.01L6 15"/></g></symbol>
+  <symbol id="act-chevron-left-double" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M10 3 4 9.01 10 15"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M15 3 9 9.01 15 15"/></g></symbol>
+  <symbol id="act-chevron-right-double" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m8 15 6-6.01L8 3"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m3 15 6-6.01L3 3"/></g></symbol>
+  <symbol id="act-details" viewBox="0 0 17 17" fill="none"><circle cx="8.26471" cy="8.26471" r="7.76471" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.14844 13.2057H10.3837" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.85938 6.85278H8.27114V12.8528" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M7.91544 3.67639C7.71991 3.67639 7.5625 3.83522 7.5625 4.02933C7.5625 4.22486 7.71991 4.38227 7.91544 4.38227C8.10956 4.38227 8.26838 4.22486 8.26838 4.02933C8.26838 3.83522 8.10956 3.67639 7.91544 3.67639V3.67639Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="act-information" viewBox="0 0 18 18" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.125 1.375C4.84479 1.375 1.375 4.84479 1.375 9.125C1.375 13.4052 4.84479 16.875 9.125 16.875C13.4052 16.875 16.875 13.4052 16.875 9.125C16.875 4.84479 13.4052 1.375 9.125 1.375ZM0.375 9.125C0.375 4.29251 4.29251 0.375 9.125 0.375C13.9575 0.375 17.875 4.29251 17.875 9.125C17.875 13.9575 13.9575 17.875 9.125 17.875C4.29251 17.875 0.375 13.9575 0.375 9.125Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M6.375 14.375C6.375 14.0989 6.59886 13.875 6.875 13.875H11.375C11.6511 13.875 11.875 14.0989 11.875 14.375C11.875 14.6511 11.6511 14.875 11.375 14.875H6.875C6.59886 14.875 6.375 14.6511 6.375 14.375Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M7.125 7.625C7.125 7.34886 7.34886 7.125 7.625 7.125H9.125C9.40114 7.125 9.625 7.34886 9.625 7.625V14C9.625 14.2761 9.40114 14.5 9.125 14.5C8.84886 14.5 8.625 14.2761 8.625 14V8.125H7.625C7.34886 8.125 7.125 7.90114 7.125 7.625Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M7.875 4.625C7.875 4.14391 8.26481 3.75 8.75 3.75C9.23239 3.75 9.625 4.14261 9.625 4.625C9.625 5.11019 9.23109 5.5 8.75 5.5C8.26611 5.5 7.875 5.10889 7.875 4.625ZM8.75 4.75V4.5C8.81839 4.5 8.875 4.55661 8.875 4.625C8.875 4.69359 8.81969 4.75 8.75 4.75Z" fill="currentColor"/></symbol>
+  <symbol id="act-error" viewBox="0 0 24 24" fill="none"><g stroke="currentColor" clip-path="url(#error-a)"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.332v5.628m0 3.705v.425"/><circle cx="12" cy="11.999" r="10.667"/></g><defs><clipPath id="error-a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs></symbol>
+  <symbol id="act-warning" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.86953 3.14301C7.15936 0.56334 10.8407 0.563329 12.1305 3.143L16.7764 12.4348C17.94 14.762 16.2478 17.5001 13.6459 17.5001H4.35413C1.75229 17.5001 0.0600522 14.762 1.22363 12.4348L5.86953 3.14301ZM11.2361 3.59021C10.3148 1.7476 7.68527 1.7476 6.76396 3.59022L2.11806 12.882C1.28693 14.5443 2.49567 16.5001 4.35413 16.5001H13.6459C15.5044 16.5001 16.7131 14.5443 15.882 12.882L11.2361 3.59021Z" fill="currentColor"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M9 6C9.27614 6 9.5 6.22386 9.5 6.5V10.7212C9.5 10.9973 9.27614 11.2212 9 11.2212C8.72386 11.2212 8.5 10.9973 8.5 10.7212V6.5C8.5 6.22386 8.72386 6 9 6Z" fill="currentColor"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M9 13C9.27614 13 9.5 13.2239 9.5 13.5V13.8186C9.5 14.0947 9.27614 14.3186 9 14.3186C8.72386 14.3186 8.5 14.0947 8.5 13.8186V13.5C8.5 13.2239 8.72386 13 9 13Z" fill="currentColor"/></g></symbol>
+  <symbol id="act-clock-dark" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="11.999" r="10.667" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M17.402 12.27H11.73V3.965"/></symbol>
+  <symbol id="act-success" viewBox="0 0 24 24" fill="none"><g transform="scale(1.33333)"><path d="M5.88916 8.82012L7.70987 10.803L11.8029 7.11072" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M1 14C1 15.6569 2.34315 17 4 17H14C15.6569 17 17 15.6569 17 14V4C17 2.34315 15.6569 1 14 1H4C2.34315 1 1 2.34315 1 4V14Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></g></symbol>
+  <!-- SENT chip icon. Supplied by Scherry from the Figma library as "Email Verification"
+       (envelope + check badge), chosen over the DS's send-mail-arrow, whose art is 21x12 in a
+       24 box and so always read short next to the other chips. NOT PRESENT in the code icon set
+       (images/icons/svg/ has no email-verification.svg), so it needs adding there to match Figma. -->
+  <symbol id="act-email-verification" viewBox="0 0 24 24" fill="none"><g transform="translate(0.15 0) scale(0.925 1)"><path d="M12.8 17.7826H3.73913C2.7787 17.7826 2 17.0039 2 16.0435V4.73913C2 3.7787 2.7787 3 3.73913 3H20.2609C21.2213 3 22 3.7787 22 4.73913V11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.75684 5.52393L10.1542 11.4257C11.2547 12.6222 13.0568 12.6222 14.1573 11.4257L19.546 5.53175" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.50292 10.7583L4.75684 15.0926" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></g> <circle cx="18.05" cy="16.5" r="5.15" stroke="currentColor" fill="none"/> <path d="M16.12 16.5L17.62 18L20.63 15.21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="act-send-mail-arrow" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M15.942 17.826H2.725a1.39 1.39 0 0 1-1.392-1.391V7.39C1.334 6.623 1.957 6 2.726 6h13.217c.768 0 1.392.623 1.392 1.391V9.13M3.54 8.019l4.317 4.72m0 0c.88.958 2.323.958 3.203 0l4.31-4.714M7.858 12.74l-3.796 3.467M18.553 18.305l3.652-3.658L18.553 11M21.872 14.652H14"/></symbol>
+</defs></svg><section class="browser" aria-label="State 1: Act! web, opportunity Detail View after quote acceptance closed the opportunity won, Opportunity Actions closed">
+    <div class="browser-bar">
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="url">app.act.com/opportunities/OPP-4183</span>
+    </div>
+    <div class="frame-scroll"><div class="frame">
+
+    
+    <div class="topbar">
+      <span class="logo" aria-hidden="true">act!</span>
+      <nav class="topnav" aria-label="Act! menu bar">
+        <a href="#">Edit</a><a href="#">Lookup</a><a href="#">Opportunities</a>
+        <a href="#">Schedule</a><a href="#">Write</a><a href="#">Reports</a>
+      </nav>
+      <span class="topsearch">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m14.7 14.7 4.8 4.8"/></svg>
+        Search
+      </span>
+      <div class="top-icons">
+        <svg class="i" aria-hidden="true"><use href="#act-notification"/></svg>
+        <span class="help" aria-hidden="true">?</span>
+        <svg class="i" aria-hidden="true"><use href="#act-account"/></svg>
+      </div>
+    </div>
+
+    <div class="shell">
+      <div class="rail">
+        <nav aria-label="Act! navigation">
+          <a href="#"><svg class="i" aria-hidden="true"><use href="#act-home"/></svg>Home</a>
+          <a href="#"><svg class="i" aria-hidden="true"><use href="#act-people"/></svg>Contacts, Companies, Groups</a>
+          <a href="#"><svg class="i" aria-hidden="true"><use href="#act-calendar"/></svg>Calendar and Task List</a>
+          <a href="#"><svg class="i" aria-hidden="true"><use href="#act-history"/></svg>History List</a>
+          <a href="#" aria-current="page"><svg class="i" aria-hidden="true"><use href="#act-sales"/></svg>Opportunities</a>
+          <a href="#"><svg class="i" aria-hidden="true"><use href="#act-chart"/></svg>Dashboards and Reports</a>
+          <a href="#"><svg class="i" aria-hidden="true"><use href="#act-mail"/></svg>Marketing and Communication</a>
+          <a href="#"><svg class="i" aria-hidden="true"><use href="#act-tools"/></svg>Tools</a>
+          <a href="#"><svg class="i" aria-hidden="true"><use href="#act-utilities"/></svg>Additional Features</a>
+        </nav>
+        <div class="collapse" aria-hidden="true">←</div>
+        <div class="rail-lookup">
+          <h3>CREATE LOOKUP <span aria-hidden="true">⌄</span></h3>
+          <label for="lk-field">Opportunity field:</label>
+          <select id="lk-field"><option>Opportunity Name</option></select>
+          <label for="lk-contains">Contains:</label>
+          <input id="lk-contains" type="text" value="john">
+          <button type="button" class="btn-lookup">Lookup</button>
+          <br>
+          <button type="button" class="btn-more">More options</button>
+        </div>
+      </div>
+
+      <div class="stage">
+        <header class="area-head">
+          <nav class="peers" aria-label="Opportunities area">
+            <span class="current" aria-current="page">Opportunities</span>
+            <a href="#">Interactive Quotes</a>
+            <a href="#">Invoices &amp; Payments</a>
+          </nav>
+          <div class="area-actions">
+            <a class="act" href="#"><svg class="i" aria-hidden="true"><use href="#act-mail"/></svg>E-mail</a>
+            <a class="act" href="#"><svg class="i" aria-hidden="true"><use href="#act-history"/></svg>History</a>
+            <a class="act" href="#"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="m8.5 15.5 7-7"/></svg>Note</a>
+            <a class="act" href="#"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg>To-Do</a>
+            <a class="act" href="#"><svg class="i" aria-hidden="true"><use href="#act-calendar"/></svg>Meeting</a>
+            <a class="act" href="#"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h3l1.5 4.5L8.5 9a12 12 0 0 0 6.5 6.5l1.5-2L21 15v3a2 2 0 0 1-2 2C10 20 4 14 4 5a2 2 0 0 1 2-2z"/></svg>Call</a>
+            <button type="button" class="btn-create">Create new <span aria-hidden="true">⌄</span></button>
+            <span class="kebab" aria-hidden="true">⋮</span>
+          </div>
+        </header>
+
+        
+        <div class="rec-bar">
+          <h2>HVAC maintenance contract</h2>
+          <div class="pager-ctl" aria-hidden="true">
+            <span>«</span><span>‹</span><span>4 of 12</span><span>›</span><span>»</span>
+          </div>
+          <nav class="segmented" aria-label="Opportunity views">
+            <a href="#">List View</a>
+            <a href="#" aria-current="page">Detail View</a>
+            <a href="#">Pipeline View</a>
+          </nav>
+          <div class="rec-actions">
+            
+            <button type="button" class="btn-oppy-actions" aria-expanded="false">Opportunity Actions <span aria-hidden="true">⌄</span></button>
+            <button type="button" class="btn-save">Save</button>
+            <span class="kebab" aria-hidden="true">⋮</span>
+
+          </div>
+        </div>
+
+        
+        <div class="banner-info" role="status">
+          <i class="icon" aria-hidden="true"><svg class="i"><use href="#act-information"/></svg></i>
+          <div class="txt">
+            <h3>Draft invoice ready for review &#8212; nothing has been sent to QuickBooks.</h3>
+            <p>Alicia Tran paid a $1,700.00 deposit when she accepted the quote. Line items stay on Quote Q-2026-0417 &#8212; edit the quote to change them.</p>
+          </div>
+                  <a class="btn-banner" href="#">View draft invoice</a>
+</div>
+
+        
+        <div class="form-wrap">
+          <h3 class="sect-h">Opportunity</h3>
+          <hr class="sect-rule">
+          <div class="name-row">
+            <label for="opp-name">Name</label>
+            <input id="opp-name" type="text" value="HVAC maintenance contract">
+          </div>
+
+          <div class="form-cols">
+            <div>
+              <h3 class="sect-h">Totals</h3>
+              <hr class="sect-rule">
+              <div class="frow"><label for="f-total">Total</label><input id="f-total" type="text" value="$6,800.00" readonly></div>
+              <div class="frow"><label for="f-weighted">Weighted</label><input id="f-weighted" type="text" value="$6,800.00" readonly></div>
+              <div class="frow"><label for="f-prob">Probability</label><input id="f-prob" type="number" value="100" min="0" max="100" style="width:110px"></div>
+
+              <h3 class="sect-h" style="margin-top:14px">Days Open</h3>
+              <hr class="sect-rule">
+              <div class="frow"><label for="f-open">Open Date</label><input id="f-open" type="text" value="5/12/26"></div>
+              <div class="frow"><label for="f-days">Days Open</label><input id="f-days" type="text" value="98" readonly></div>
+            </div>
+
+            <div>
+              
+              <fieldset class="statusbox">
+                <legend>Status</legend>
+                <label class="opt"><input type="radio" name="opp-status" value="open"> Open</label>
+                <label class="opt"><input type="radio" name="opp-status" value="closed-won" checked> Closed - Won</label>
+                <label class="opt"><input type="radio" name="opp-status" value="closed-lost"> Closed - Lost</label>
+                <label class="opt"><input type="radio" name="opp-status" value="inactive"> Inactive</label>
+              </fieldset>
+
+              <fieldset class="stagebox">
+                <legend>Process/Stage</legend>
+                <div class="frow"><label for="f-process">Process</label>
+                  <select id="f-process"><option>Act! Sales Cycle</option></select></div>
+                <div class="frow" style="margin-bottom:2px"><label for="f-stage">Stage</label>
+                  <select id="f-stage"><option>Commitment to Buy</option></select></div>
+              </fieldset>
+            </div>
+
+            <div>
+              <div class="assoc">
+                <h3>Association</h3>
+                <ul>
+                  <li>Contacts
+                    <ul><li><a href="#">Alicia Tran</a></li></ul>
+                  </li>
+                  <li>Groups</li>
+                  <li>Companies
+                    <ul><li><a href="#">Riverbend Property Group</a></li></ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <nav class="rec-tabs" aria-label="Opportunity record sections">
+          <a href="#" aria-current="page">Products/Services</a>
+          <a href="#">Contacts</a>
+          <a href="#">Groups/Companies</a>
+          <a href="#">Notes</a>
+          <a href="#">Activities</a>
+          <a href="#">History</a>
+          <a href="#">Documents</a>
+          <a href="#">Opportunity Info</a>
+          <a href="#">Opportunity Access</a>
+          <a href="#">User Fields</a>
+          <span class="ovf" aria-hidden="true"><span>‹</span><span>›</span></span>
+        </nav>
+
+        <div class="tab-body">
+          <div class="tab-toolbar">
+            <button type="button" class="btn-primary-sm">Add</button>
+            <button type="button" class="btn-gray-sm">Remove Selected</button>
+            <button type="button" class="btn-gray-sm">Save</button>
+          </div>
+          <table class="plist">
+            <caption>Products and services on this opportunity</caption>
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col" class="num">Quantity</th>
+                <th scope="col" class="num">Price</th>
+                <th scope="col" class="num">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" style="font-weight:400">HVAC Preventive Maintenance — Annual</th>
+                <td class="num">4</td>
+                <td class="num">$1,450.00</td>
+                <td class="num">$5,800.00</td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400">Priority Response Coverage</th>
+                <td class="num">1</td>
+                <td class="num">$1,000.00</td>
+                <td class="num">$1,000.00</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="tab-pager">
+            <svg class="i" aria-hidden="true"><use href="#act-chevron-left-double"/></svg><svg class="i" aria-hidden="true"><use href="#act-chevron-left"/></svg>
+            <span>1 - 2 of 2</span>
+            <svg class="i" aria-hidden="true"><use href="#act-chevron-right"/></svg><svg class="i" aria-hidden="true"><use href="#act-chevron-right-double"/></svg>
+            <label for="pp" style="margin-left:12px">Records per page</label>
+            <select id="pp"><option>50 records per page</option></select>
+          </div>
+        </div>
+
+        <div class="foot-bar">HVAC maintenance contract — Closed – Won, saved Aug 20, 2026</div>
+      </div>
+    </div>
+
+    </div></div>
+  </section></body></html>

@@ -1,0 +1,48 @@
+SCHERRY SWEENEY — PORTFOLIO (local copy)
+=========================================
+
+HOW TO OPEN
+   Double-click  index.html
+
+   Everything links together from there. Keep this folder intact —
+   the pages find each other by relative path, so moving index.html
+   out on its own will break the links to the case studies.
+
+
+WHAT'S IN HERE
+   index.html ................ portfolio home
+   quickbooks/ ............... Act! + QuickBooks case study
+      assets/mockups/ ........ the 11 live mockups it embeds
+      assets/fonts/ .......... fonts those mockups use
+   flightpulse/ .............. GE Aviation FlightPulse case study
+   act-mobile/ ............... Act! Mobile CRM case study
+      assets/ ................ app screenshots
+
+
+PASSWORD
+   All three case studies are gated:   sweeney-portfolio-2026
+
+   It's remembered per browser tab, so closing the tab means
+   entering it again. When you send links to someone, put the
+   password in the same email.
+
+
+NEEDS INTERNET
+   The pages load their typefaces (Fraunces, IBM Plex) from Google
+   Fonts. Offline they still work perfectly, just in substitute
+   fonts. Everything else — text, images, mockups, navigation —
+   works with no connection at all.
+
+
+STILL TO ADD
+   - Cover images for the three case study cards on the home page
+   - A downloadable resume PDF linked from the Experience section
+   - FlightPulse has six empty image slots waiting on screens
+   - Act! Mobile needs: App Store rating, post-launch feature count,
+     two Figma links, and the feedback item behind Layout Designer
+
+
+RELATION TO THE ONLINE VERSION
+   This is a snapshot taken 19 October 2026 of the published pages
+   at claude.ai. Editing files here does not change those, and
+   changes made online will not appear here.
