@@ -129,6 +129,13 @@ ol.timeline .b span{color:var(--ink-2);font-size:.93rem;line-height:1.5;display:
 .figspots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:1.2rem;margin-top:1.8rem}
 .figspots .figspot{margin-top:0}
+.fig{margin:1.8rem 0 0}
+.fig a{display:block;border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:#fff}
+.fig img{display:block;width:100%;height:auto}
+.fig figcaption{font-size:.88rem;color:var(--ink-3);margin-top:.6rem;max-width:none}
+.fig.dark a{background:#faf9f5}
+.figs{display:grid;gap:1.6rem;margin-top:1.8rem}
+.figs .fig{margin-top:0}
 
 footer{padding:4rem 0 5rem;border-top:1px solid var(--rule);margin-top:3rem}
 footer p{font-family:var(--f-mono);font-size:.74rem;color:var(--ink-3);line-height:1.8;max-width:none}
@@ -286,15 +293,9 @@ footer a:hover{border-bottom-color:var(--accent)}
     </div>
   </div>
 
-  <div class="figspots">
-    <div class="figspot">
-      <span class="lbl">Image slot</span>
-      <p class="what">Pilot journey map — 50 tasks across 7 flight stages</p>
-    </div>
-    <div class="figspot">
-      <span class="lbl">Image slot</span>
-      <p class="what">Persona boards — John (long haul) and Henry (short haul)</p>
-    </div>
+  <div class="figs">
+    <figure class="fig"><a href="assets/job-map.jpg" target="_blank" rel="noopener"><img src="assets/job-map.jpg" width="2000" height="1125" loading="lazy" alt="Job map of a pilot's mission, from retrieving the roster through briefing the crew, flying the route and assessing performance"></a><figcaption>Job map — what pilots are trying to get done, from retrieving the roster to assessing their own performance</figcaption></figure>
+    <figure class="fig"><a href="assets/personas.jpg" target="_blank" rel="noopener"><img src="assets/personas.jpg" width="2000" height="1138" loading="lazy" alt="Persona board for Qantas pilots John (long haul) and Henry (short haul), with goals, needs, pain points and personality"></a><figcaption>Persona board — John (long haul) and Henry (short haul)</figcaption></figure>
   </div>
 
   <h3 style="margin-top:2.8rem">Four insights that shaped everything</h3>
@@ -368,15 +369,9 @@ footer a:hover{border-bottom-color:var(--accent)}
     </div>
   </div>
 
-  <div class="figspots">
-    <div class="figspot">
-      <span class="lbl">Image slot</span>
-      <p class="what">Workshop sketches — day three</p>
-    </div>
-    <div class="figspot">
-      <span class="lbl">Image slot</span>
-      <p class="what">Wireframe concepts — MVP exploration</p>
-    </div>
+  <div class="figs">
+    <figure class="fig"><a href="assets/workshop-sketches.jpg" target="_blank" rel="noopener"><img src="assets/workshop-sketches.jpg" width="2000" height="847" loading="lazy" alt="Workshop sketches of Threats &amp; Events, Holding Fuel and an additional fuel data wildcard concept on iPad frames"></a><figcaption>Workshop sketches, day three — Threats &amp; Events, Holding Fuel and a wildcard fuel concept</figcaption></figure>
+    <figure class="fig"><a href="assets/wireframes.jpg" target="_blank" rel="noopener"><img src="assets/wireframes.jpg" width="2400" height="1071" loading="lazy" alt="Three iPad wireframes of the Preflight screen exploring threats and errors, holding and route maps for a London to Perth flight"></a><figcaption>Wireframe concepts — three MVP layouts for the Preflight screen</figcaption></figure>
   </div>
 
   <h3 style="margin-top:2.8rem">Four principles, drawn from pilots rather than convention</h3>
@@ -387,10 +382,7 @@ footer a:hover{border-bottom-color:var(--accent)}
     <li><span class="n">04</span><span class="b"><b>Less context is more</b><span>Show the average. Let the pilot decide whether today is unusual. "Here is the information, here is how we got it — do with it what you want." No over-interpretation.</span></span></li>
   </ol>
 
-  <div class="figspot">
-    <span class="lbl">Image slot</span>
-    <p class="what">Final high-fidelity dark mode screens — Threats &amp; Events, average holding, planned vs actual fuel</p>
-  </div>
+  <figure class="fig dark"><a href="assets/final-designs.jpg" target="_blank" rel="noopener"><img src="assets/final-designs.jpg" width="2400" height="829" loading="lazy" alt="Four final dark mode iPad screens: flight overview, average holding, average actual vs planned fuel, and threats and events"></a><figcaption>Final high-fidelity dark mode screens — overview, average holding, planned vs actual fuel, Threats &amp; Events. Tap to enlarge.</figcaption></figure>
 
   <blockquote class="pull">
     <p>"If you're not trying to change a behaviour, there's no point in showing us data."</p>
@@ -457,10 +449,7 @@ footer a:hover{border-bottom-color:var(--accent)}
     </div>
   </div>
 
-  <div class="figspot">
-    <span class="lbl">Image slot</span>
-    <p class="what">Research protocol — October 2019 collaboration-week think-aloud sessions</p>
-  </div>
+  <figure class="fig"><a href="assets/research-protocol.jpg" target="_blank" rel="noopener"><img src="assets/research-protocol.jpg" width="2000" height="1042" loading="lazy" alt="The clickable FlightPulse prototype beside the research protocol document for the think-aloud sessions"></a><figcaption>The clickable prototype and research protocol — October 2019 collaboration-week think-aloud sessions</figcaption></figure>
 </div></section>
 
 <section><div class="wrap">
