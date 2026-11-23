@@ -70,6 +70,9 @@ header.hero .sub{font-family:var(--f-display);font-style:italic;font-weight:300;
 .cover .lbl{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.13em;
   text-transform:uppercase;color:var(--amber)}
 .cover .what{font-size:.78rem;color:var(--ink-3);line-height:1.4;margin:0;max-width:20ch}
+a.cover-img{display:block;border:1px solid var(--rule);border-radius:6px;overflow:hidden;
+  aspect-ratio:4/3;background:var(--paper-2)}
+a.cover-img img{display:block;width:100%;height:100%;object-fit:cover}
 .item .eyebrow{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.13em;
   text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.5rem}
 .item h3{font-family:var(--f-display);font-weight:400;font-size:clamp(1.3rem,2.2vw,1.72rem);
@@ -154,10 +157,7 @@ footer p{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-3);line-heig
 
     <div class="item">
       <div class="item-grid">
-        <div class="cover">
-          <span class="lbl">Image slot</span>
-          <p class="what">Cover image — QuickBooks integration</p>
-        </div>
+        <a class="cover-img" href="quickbooks/index.html" tabindex="-1" aria-hidden="true"><img src="assets/cover-quickbooks.jpg" width="960" height="720" alt="Act! Invoices &amp; Payments screen showing invoices waiting to be sent to QuickBooks, one blocked"></a>
         <div>
           <span class="eyebrow">ACT! + QuickBooks Online · 2026</span>
           <h3>Getting a sales team and an accounting system to agree about money</h3>
@@ -179,10 +179,7 @@ footer p{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-3);line-heig
 
     <div class="item">
       <div class="item-grid">
-        <div class="cover">
-          <span class="lbl">Image slot</span>
-          <p class="what">Cover image — FlightPulse Preflight</p>
-        </div>
+        <a class="cover-img" href="flightpulse/index.html" tabindex="-1" aria-hidden="true"><img src="assets/cover-flightpulse.jpg" width="960" height="720" alt="Two FlightPulse Preflight dark mode iPad screens: flight overview and average holding"></a>
         <div>
           <span class="eyebrow">GE Aviation · FlightPulse® Preflight · 2019–2020</span>
           <h3>Putting data in the hands of pilots before they leave the gate</h3>
@@ -193,7 +190,7 @@ footer p{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-3);line-heig
           <div class="facts">
             <span><b>5.71MM kg</b> CO₂ avoided, year one</span>
             <span><b>6,000+</b> pilots</span>
-            <span>Lead UX &amp; interaction design</span>
+            <span>UX lead · research &amp; design</span>
           </div>
           <a class="go" href="flightpulse/index.html">Read the case study →</a>
           <span class="lock">Password required</span>
@@ -203,10 +200,7 @@ footer p{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-3);line-heig
 
     <div class="item">
       <div class="item-grid">
-        <div class="cover">
-          <span class="lbl">Image slot</span>
-          <p class="what">Cover image — ACT! Mobile CRM</p>
-        </div>
+        <a class="cover-img" href="act-mobile/index.html" tabindex="-1" aria-hidden="true"><img src="assets/cover-act-mobile.jpg" width="960" height="720" alt="Three Act! Mobile screens: contact list, contact details and opportunities summary"></a>
         <div>
           <span class="eyebrow">ACT! Mobile CRM · iOS &amp; Android</span>
           <h3>Rebuilding a mobile CRM from the ground up</h3>
